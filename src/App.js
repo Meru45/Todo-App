@@ -12,6 +12,10 @@ const App = () =>{
   useEffect(() => {
     getTodos();
   },[]);
+  
+  const saveLocalTodos = () => {
+      localStorage.setItem("todos", JSON.stringify(todos));
+  };
 
   useEffect(() => {
     const filterHandler = () => {
@@ -32,10 +36,6 @@ const App = () =>{
     filterHandler(); 
     saveLocalTodos();
   }, [todos, status]);
-
-  const saveLocalTodos = () => {
-      localStorage.setItem("todos", JSON.stringify(todos));
-  };
 
   const getTodos = () => {
     if(localStorage.getItem("todos") === null) {
